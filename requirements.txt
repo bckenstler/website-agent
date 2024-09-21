@@ -2,4 +2,4 @@ streamlit
 openai
 boto3
 botocore
-beatifulsoup4
+beautifulsoup4
