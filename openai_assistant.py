@@ -49,11 +49,11 @@ class Assistant:
         self.assistant = self.client.beta.assistants.retrieve(assistant_id=assistant_id)
 
         # Create or retrieve the thread for message exchanges
-        if Assistant.thread_id:
-            self.thread = self.client.beta.threads.retrieve(thread_id=Assistant.thread_id)
+        if self.thread_id:
+            self.thread = self.client.beta.threads.retrieve(thread_id=self.thread_id)
         else:
             self.thread = self.client.beta.threads.create()
-            Assistant.thread_id = self.thread.id
+            self.thread_id = self.thread.id
 
     def add_user_prompt(self, role: str, content: str):
         """
