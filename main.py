@@ -21,17 +21,17 @@ if f'agent_{user_id}' not in ss:
 
 # Configure the Streamlit app's appearance and settings
 st.set_page_config(
-    page_title="Brad Kenstler's Portfolio Chatbot",
+    page_title="Brad Kenstler's Website Agent",
     page_icon="🤖",
 )
 
 # App title displayed at the top of the page
-st.title("🤖:blue[Brad Kenstler's Portfolio] :red[Agent]")
+st.title("🤖:blue[Brad Kenstler's Website] :red[Agent]")
 
 # Display the initial message from the assistant if not shown before
 if not ss[f'initial_message_shown_{user_id}']:
     initial_message = (
-        "Hi, I'm Brad Kenstler's website agent.\n\n"
+        "Hi, I'm Brad Kenstler's website agent, built using the [OpenAI Assistants API](https://platform.openai.com/docs/assistants/overview) and Streamlit.\n\n"
         "I can answer any questions you may have about Brad's:\n"
         "* work experience\n"
         "* resume\n"
