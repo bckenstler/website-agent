@@ -11,7 +11,6 @@ import os
 
 
 # Initialize OpenAI client
-client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 model = 'gpt-4o'
 assistant_id = 'asst_FihrukJSw8GEIpMQWGKLHTAG'
 
@@ -38,7 +37,8 @@ class Assistant:
         Parameters:
             model (str): The model to use for generating responses (default: 'gpt-4o').
         """
-        self.client = client
+        self.client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+
         self.model = model
         self.assistant = None
         self.thread = None
@@ -81,7 +81,7 @@ class Assistant:
             str: The complete assistant reply or an error message.
         """
         try:
-            with client.beta.threads.runs.create(
+            with self.client.beta.threads.runs.create(
                     assistant_id=self.assistant.id,
                     thread_id=self.thread.id,
                     stream=True
@@ -142,7 +142,7 @@ class Assistant:
                                 # Submit tool outputs if available
                                 if tool_outputs:
                                     print("Tool output acquired")
-                                    with client.beta.threads.runs.submit_tool_outputs(
+                                    with self.client.beta.threads.runs.submit_tool_outputs(
                                             thread_id=self.thread.id,
                                             run_id=run_id,
                                             tool_outputs=tool_outputs,
