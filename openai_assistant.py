@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 import openai
 from openai.types.beta.assistant_stream_event import (
     ThreadMessageDelta, ThreadRunRequiresAction, ThreadMessageInProgress,
@@ -10,11 +9,9 @@ import json
 import time
 import os
 
-# Load environment variables from a .env file
-load_dotenv()
 
 # Initialize OpenAI client
-client = openai.OpenAI(api_key=os.getenv('OPENAI'))
+client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 model = 'gpt-4o'
 assistant_id = 'asst_FihrukJSw8GEIpMQWGKLHTAG'
 

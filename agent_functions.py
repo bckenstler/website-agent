@@ -6,10 +6,6 @@ from botocore.awsrequest import AWSRequest
 from botocore.endpoint import DEFAULT_TIMEOUT
 from bs4 import BeautifulSoup
 import requests
-from dotenv import load_dotenv
-
-# Load environment variables from a .env file
-load_dotenv()
 
 
 def fetch_and_read(url: str) -> str:
@@ -77,8 +73,8 @@ def post_to_lambda(subject: str, body: str, email: str, name: str, occupation: s
 
     # Get AWS credentials from environment variables
     session = boto3.Session(
-        aws_access_key_id=os.environ.get("AWS_ACCESS"),
-        aws_secret_access_key=os.environ.get("AWS_SECRET")
+        aws_access_key_id=os.environ.get("AWS_ACCESS_KEY"),
+        aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
     )
     credentials = session.get_credentials()
     current_credentials = credentials.get_frozen_credentials()
